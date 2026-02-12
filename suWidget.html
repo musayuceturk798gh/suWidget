@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div style="align-items: center; justify-items: center;">
+    <button id="toplamSu" style="background-color:aliceblue;color: dodgerblue; width:40% ; justify-content: center;height: 70%;gap: 5%;border-radius: 20px;font: bold;"></button>
+    <button id="su500" onclick="suEkle(500)" style="background-color:aliceblue;color: dodgerblue; width:20% ; justify-content: center;height: 70%;gap: 5%;border-radius: 20px;cursor: pointer;">+500ml</button>
+    <button id="su200" onclick="suEkle(500)" style="background-color:aliceblue;color: dodgerblue; width:20% ; justify-content: center;height: 70%;gap: 5%;border-radius: 20px;cursor: pointer;">+200ml</button>
+    </div>
+    <script>let miktar = parseInt(localStorage.getItem('suMiktari') || 0);
+        let sonTarih =localStorage.getItem('kayitTarihi');
+        let bugun=new Date().toDateString();
+        if (sonTarih !==bugun) 
+        {
+            miktar=0;
+            localStorage.setItem('suMiktari',0);
+            localStorage.setItem('kayitTarihi',bugun);
+        }
+        const ekran = document.getElementById("toplamSu")
+        ekran.innerText =miktar + "ml";
+        function suEkle(ml)
+        {
+            miktar +=ml;
+            ekran.innerText =miktar + ml + "ml";
+            localStorage.setItem('suMiktari',miktar)
+            localStorage.setItem('kayitTarihi',bugun)
+        }
+        
+    </script>
+</body>
+</html>
